@@ -56,7 +56,7 @@ class Game
 
 		if @game_board.winstate?
 			@game_board.printBoard
-			print "Congratz #{@current_player.name}, you win!\n"
+			print "Congratz #{@current_player.name.capitalize}, you win!\n"
 			Quit #Add code to restart
 		elsif @game_board.stalemate?
 			@game_board.printBoard
