@@ -25,8 +25,10 @@ class Game
 		end
 
 		if @game_board.winstate?
+			@game_board.printBoard
 			#Add code to handle player victory
 		elsif @game_board.stalemate?
+			@game_board.printBoard
 			#Add code to handle stalemate
 		else
 			#Add code to jump to next players turn
