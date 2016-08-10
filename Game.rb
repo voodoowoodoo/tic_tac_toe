@@ -77,5 +77,6 @@ class Game
 			print"Invalid selection, select again/n"
 			validCell?(player)
 		end
+	end
 end
 
