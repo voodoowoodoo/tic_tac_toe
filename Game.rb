@@ -10,9 +10,9 @@ class Game
 		@selection = gets.chomp
 
 		#Maybe refractor into its own method using recursion to prevent dubble coding
-		if selection == "1"
+		if @selection == "1"
 			playGame
-		elsif selection == "2"
+		elsif @selection == "2"
 			Quit
 		#Add code for option 9
 		else
@@ -70,7 +70,7 @@ class Game
 	def validCell?(player)
 		
 		@cell = gets.chomp
-		@cell.to_i!
+		@cell = @cell.to_i - 1
 
 		if @game_board.cellEmpty?(@cell)
 			@game_board.changeCell(@cell, player.symbol)
