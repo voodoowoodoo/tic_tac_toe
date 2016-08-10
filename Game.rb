@@ -45,7 +45,7 @@ class Game
 			@current_player = @player_list[1]
 		end
 
-		@turn_nr += 1
+		turn_nr += 1
 
 		@game_board.printBoard
 		
@@ -54,12 +54,14 @@ class Game
 
 		if @game_board.winstate?
 			@game_board.printBoard
-			#Add code to handle player victory
+			print "Congratz #{@current_player.name}, you win!/n"
+			Quit #Add code to restart
 		elsif @game_board.stalemate?
 			@game_board.printBoard
-			#Add code to handle stalemate
+			print "Awww, stalemate/n"
+			Quit #Add code to restart
 		else
-			#Add code to jump to next players turn
+			turn(turn_nr)
 		end
 	end
 
