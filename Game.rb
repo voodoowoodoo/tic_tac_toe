@@ -6,23 +6,51 @@ class Game
 	
 	#Prints welcoming screen and options menu
 	def initialize
-		print "+++++++++++++++++++++++/nWelcome to Tic Tac Toe!/n+++++++++++++++++++++++/n/nMake a selection!/n1) Play/n2)Quit/n9)Information"
-		selection = gets.chomp
+		print "+++++++++++++++++++++++/nWelcome to Tic Tac Toe!/n+++++++++++++++++++++++/n/nMake a selection!/n1) Play/n2)Quit/n9)Information/n"
+		@selection = gets.chomp
+
+		#Maybe refractor into its own method using recursion to prevent dubble coding
+		if selection == "1"
+			playGame
+		elsif selection == "2"
+			Quit
+		else
+			#add code for invalid selection
+		end
+
+	#Starts a game
+	def playGame
+		@game_board = Board.new
+		@player_list = []
+		@turn_nr = 0
+
+		print "Enter Player X name:/n"
+		@player_list[0] = Player.new
+		@player_list[0].name = gets.chomp
+		@player_list[0].symbol = "X"
+
+		print "Enter Player O name:/n"
+		@player_list[1] = Player.new
+		@player_list[1].name = gets.chomp
+		@player_list[1].symbol = "O"
+
+		turn(@turn_nr)
+	end
 
 	#Dictates the turn structure of a player, printing the board and checking for winstates and stalemates
-	def turn(player)
+	def turn(turn_nr)
+		if turn_nr % 2 == 0
+			@current_player = @player_list[0]
+		else
+			@current_player = @player_list[1]
+		end
+
+		@turn_nr += 1
+
 		@game_board.printBoard
 		
-		print "/n Please select a Cell (input 1 to 9):/n"
-		selection = gets.chomp
-		#Add code to check selection validity
-		selection.to_i!
-
-		if @game_board.cellEmpty?(selection)
-			@game_board.changeCell(selection, player.symbol)
-		else
-			#add code for none valid selection
-		end
+		print "/n #{@current_player.name.capitalize}, please select a Cell (input 1 to 9):/n"
+		validCell?(@current_player)
 
 		if @game_board.winstate?
 			@game_board.printBoard
@@ -34,5 +62,17 @@ class Game
 			#Add code to jump to next players turn
 		end
 	end
+
+	def validCell?(player)
+		
+		@cell = gets.chomp
+		@cell.to_i!
+
+		if @game_board.cellEmpty?(@cell)
+			@game_board.changeCell(@cell, player.symbol)
+		else
+			print"Invalid selection, select again/n"
+			validCell?(player)
+		end
 end
 
