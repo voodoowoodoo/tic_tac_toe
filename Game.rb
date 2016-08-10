@@ -14,6 +14,7 @@ class Game
 			playGame
 		elsif selection == "2"
 			Quit
+		#Add code for option 9
 		else
 			#add code for invalid selection
 		end
