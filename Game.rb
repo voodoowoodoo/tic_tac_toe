@@ -80,3 +80,5 @@ class Game
 	end
 end
 
+start_game = Game.new
+
