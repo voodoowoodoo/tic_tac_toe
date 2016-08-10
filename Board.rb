@@ -1,5 +1,6 @@
 require "./Cell"
 
+#Holds all information relevant to the gameboard and its current state, aswell as methods to call this information.
 class Board
 
 	#populates a new board with 9 empty cells
