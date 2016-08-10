@@ -18,6 +18,7 @@ class Game
 		else
 			#add code for invalid selection
 		end
+	end
 
 	#Starts a game
 	def playGame
