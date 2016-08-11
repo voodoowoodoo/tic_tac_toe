@@ -35,6 +35,14 @@ class Board
 	def winstate?
 		@winstates = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6]]
 
+		@winstates.each do |i|
+			if @field[i[0]].value != " " && @field[i[1]].value != " " && @field[i[2]].value != " "
+				if @field[i[0]].value == @field[i[1]].value && @field[i[2]].value == @field[i[0]].value
+					return true
+				end
+			end
+		end
+
 	end
 
 	#Checks whether a stalemate has been achieved

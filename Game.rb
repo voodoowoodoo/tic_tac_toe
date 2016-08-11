@@ -54,11 +54,11 @@ class Game
 		print "\n #{@current_player.name.capitalize}, please select a Cell (input 1 to 9):\n"
 		validCell?(@current_player)
 
-		if @game_board.winstate?
+		if @game_board.winstate? == true
 			@game_board.printBoard
 			print "Congratz #{@current_player.name.capitalize}, you win!\n"
 			Quit #Add code to restart
-		elsif @game_board.stalemate?
+		elsif @game_board.stalemate? == true
 			@game_board.printBoard
 			print "Awww, stalemate\n"
 			Quit #Add code to restart
