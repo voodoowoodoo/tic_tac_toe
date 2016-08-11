@@ -42,11 +42,25 @@ class Board
 				end
 			end
 		end
-
 	end
 
-	#Checks whether a stalemate has been achieved
+	#Checks whether a stalemate has been achieved where the entire board is filled without achieving a winstate (only call this method after checking for a winstate)
 	def stalemate?
+
+		@symbol_counter = 0
+
+		(0..8).each do |i|
+			if @field[i].value != " "
+				@symbol_counter += 1
+			end
+		end
+
+		if @symbol_counter == 9
+			return true
+		else
+			return false
+		end
+
 	end
 				
 end

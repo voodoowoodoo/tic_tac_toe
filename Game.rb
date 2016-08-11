@@ -6,15 +6,14 @@ class Game
 	
 	#Prints welcoming screen and options menu
 	def initialize
-		print "+++++++++++++++++++++++\nWelcome to Tic Tac Toe!\n+++++++++++++++++++++++\n\nMake a selection!\n1) Play\n2)Quit\n9)Information\n"
+		print "+++++++++++++++++++++++\nWelcome to Tic Tac Toe!\n+++++++++++++++++++++++\n\n_________________\nMake a selection!\n1)Play\n2)Quit\n9)Information\n"
 		@selection = gets.chomp
 
 		#Maybe refractor into its own method using recursion to prevent dubble coding
 		if @selection == "1"
 			playGame
 		elsif @selection == "2"
-			Quit
-		#Add code for option 9
+			#Add code for option 9
 		else
 			#add code for invalid selection
 		end
@@ -51,17 +50,17 @@ class Game
 
 		@game_board.printBoard
 		
-		print "\n #{@current_player.name.capitalize}, please select a Cell (input 1 to 9):\n"
+		print "\n#{@current_player.name.capitalize}, please select a Cell (input 1 to 9):\n"
 		validCell?(@current_player)
 
 		if @game_board.winstate? == true
 			@game_board.printBoard
-			print "Congratz #{@current_player.name.capitalize}, you win!\n"
-			Quit #Add code to restart
+			print "\nCongratz #{@current_player.name.capitalize}, you win!\n"
+			#Add code to restart
 		elsif @game_board.stalemate? == true
 			@game_board.printBoard
-			print "Awww, stalemate\n"
-			Quit #Add code to restart
+			print "\nAwww, stalemate\n"
+			#Add code to restart
 		else
 			turn(turn_nr)
 		end
